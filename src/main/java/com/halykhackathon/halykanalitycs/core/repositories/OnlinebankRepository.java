@@ -17,5 +17,10 @@ public interface OnlinebankRepository extends JpaRepository<OnlinebankPayment, L
     BigDecimal getSumByCategory(HalykCategory category);
 
     @Query("SELECT p FROM OnlinebankPayment p WHERE YEAR(p.dateOfPayment) = YEAR(CURRENT_DATE) AND MONTH(p.dateOfPayment) = MONTH(CURRENT_DATE)")
-    List<HalykPayment> findPaymentsForCurrentMonth();
+    List<OnlinebankPayment> findPaymentsForCurrentMonth();
+
+    @Query("SELECT p FROM OnlinebankPayment p WHERE YEAR(p.dateOfPayment) = YEAR(CURRENT_DATE) " +
+            "AND MONTH(p.dateOfPayment) = MONTH(CURRENT_DATE) " +
+            "AND p.category = :category")
+    List<OnlinebankPayment> findPaymentsForCurrentMonthByCategory(HalykCategory category);
 }

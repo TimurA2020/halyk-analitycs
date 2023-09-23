@@ -1,5 +1,6 @@
 package com.halykhackathon.halykanalitycs.core.services;
 
+import com.halykhackathon.halykanalitycs.core.categories.HalykCategory;
 import com.halykhackathon.halykanalitycs.core.models.OnlinebankPayment;
 import com.halykhackathon.halykanalitycs.core.repositories.OnlinebankRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,13 +12,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OnlinebankService {
 
-    private final OnlinebankRepository onlinebankRepository;
+    private final OnlinebankRepository OnlinebankRepository;
 
     public OnlinebankPayment getOnlinebankPayment(Long id) {
-        return onlinebankRepository.findById(id).orElseThrow();
+        return OnlinebankRepository.findById(id).orElseThrow();
     }
 
     public List<OnlinebankPayment> getAllOnlinebankPayments() {
-        return onlinebankRepository.findAll();
+        return OnlinebankRepository.findAll();
+    }
+
+    public List<OnlinebankPayment> getPaymentsForThisMonth() {
+        return OnlinebankRepository.findPaymentsForCurrentMonth();
+    }
+
+    public List<OnlinebankPayment> getPaymentsForThisMonthByCategory(HalykCategory category) {
+        return OnlinebankRepository.findPaymentsForCurrentMonthByCategory(category);
     }
 }

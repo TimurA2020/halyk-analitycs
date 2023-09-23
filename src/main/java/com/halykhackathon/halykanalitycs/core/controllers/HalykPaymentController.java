@@ -19,8 +19,8 @@ public class HalykPaymentController {
     private final HalykService halykService;
 
     @RequestMapping(value = "/get-payment-by-id", method = RequestMethod.GET)
-    public ResponseEntity<String> getHalykPaymentById() {
-        return new ResponseEntity<String>("123", HttpStatus.OK);
+    public ResponseEntity<HalykPayment> getHalykPaymentById(@RequestParam Long id) {
+        return new ResponseEntity<>(halykService.getHalykPayment(id), HttpStatus.OK);
     }
 
     @GetMapping("/get-payments-this-month")
@@ -28,10 +28,8 @@ public class HalykPaymentController {
         return new ResponseEntity<>(halykService.getPaymentsForThisMonth(), HttpStatus.OK);
     }
 
-    @GetMapping("/get-payments-this-month-category")
+    @GetMapping("/get-payments-this-month-by-category")
     public ResponseEntity<List<HalykPayment>> getPaymentsForThisMonthByCategory() {
         return new ResponseEntity<>(halykService.getPaymentsForThisMonthByCategory(HalykCategory.FOOD), HttpStatus.OK);
     }
-
-
 }
