@@ -1,10 +1,7 @@
 package com.halykhackathon.halykanalitycs.core.models;
 
 import com.halykhackathon.halykanalitycs.core.categories.OnlinebankCategory;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +20,7 @@ public class OnlinebankPayment {
 
     private Long amount;
 
+    @Enumerated(EnumType.STRING)
     private OnlinebankCategory category;
 
     private String recipient;

@@ -5,13 +5,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("onlinebank-payment")
+@RequestMapping("/onlinebank-payment")
 public class OnlinebankPaymentController {
 
-    @RequestMapping(value = "get-payment-by-id", method = RequestMethod.GET)
+    @RequestMapping(value = "/get-payment-by-id", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<HalykPayment> getHalykPaymentById (@PathVariable Long id) {
         return null;
     }
+
+
 
 }
