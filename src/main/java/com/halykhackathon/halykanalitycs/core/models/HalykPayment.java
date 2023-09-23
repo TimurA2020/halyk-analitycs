@@ -1,5 +1,6 @@
 package com.halykhackathon.halykanalitycs.core.models;
 
+import com.halykhackathon.halykanalitycs.core.categories.HalykCategory;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class HalykPayment {
 
     private BigDecimal amount;
 
-    private String category;
+    private HalykCategory category;
 
     private String recipient;
 }
