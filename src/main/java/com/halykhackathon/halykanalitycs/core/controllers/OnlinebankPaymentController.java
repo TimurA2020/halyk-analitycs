@@ -10,8 +10,8 @@ public class OnlinebankPaymentController {
 
     @RequestMapping(value = "get-payment-by-id", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<HalykPayment> getHalykPaymentById (@PathVariable String id) {
-
+    public ResponseEntity<HalykPayment> getHalykPaymentById (@PathVariable Long id) {
+        return null;
     }
 
 }
