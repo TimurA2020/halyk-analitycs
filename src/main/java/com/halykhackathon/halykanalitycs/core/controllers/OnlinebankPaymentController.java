@@ -1,8 +1,10 @@
 package com.halykhackathon.halykanalitycs.core.controllers;
 
 import com.halykhackathon.halykanalitycs.core.categories.HalykCategory;
+import com.halykhackathon.halykanalitycs.core.categories.OnlinebankCategory;
 import com.halykhackathon.halykanalitycs.core.models.HalykPayment;
 import com.halykhackathon.halykanalitycs.core.models.OnlinebankPayment;
+import com.halykhackathon.halykanalitycs.core.models.StatisticsDTO;
 import com.halykhackathon.halykanalitycs.core.services.HalykService;
 import com.halykhackathon.halykanalitycs.core.services.OnlinebankService;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +36,13 @@ public class OnlinebankPaymentController {
         return new ResponseEntity<>(OnlinebankService.getPaymentsForThisMonth(), HttpStatus.OK);
     }
 
+    @GetMapping("/get-statistics")
+    public ResponseEntity<List<StatisticsDTO>> getStatistics() {
+        return new ResponseEntity<>(OnlinebankService.getStatistics(), HttpStatus.OK);
+    }
+
     @GetMapping("/get-payments-this-month-by-category")
     public ResponseEntity<List<OnlinebankPayment>> getPaymentsForThisMonthByCategory(@RequestParam String category) {
-        return new ResponseEntity<>(OnlinebankService.getPaymentsForThisMonthByCategory(HalykCategory.valueOf(category)), HttpStatus.OK);
+        return new ResponseEntity<>(OnlinebankService.getPaymentsForThisMonthByCategory(OnlinebankCategory.valueOf(category)), HttpStatus.OK);
     }
 }

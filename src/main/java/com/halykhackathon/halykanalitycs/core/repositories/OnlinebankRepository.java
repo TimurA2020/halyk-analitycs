@@ -1,6 +1,7 @@
 package com.halykhackathon.halykanalitycs.core.repositories;
 
 import com.halykhackathon.halykanalitycs.core.categories.HalykCategory;
+import com.halykhackathon.halykanalitycs.core.categories.OnlinebankCategory;
 import com.halykhackathon.halykanalitycs.core.models.HalykPayment;
 import com.halykhackathon.halykanalitycs.core.models.OnlinebankPayment;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,5 +23,11 @@ public interface OnlinebankRepository extends JpaRepository<OnlinebankPayment, L
     @Query("SELECT p FROM OnlinebankPayment p WHERE YEAR(p.dateOfPayment) = YEAR(CURRENT_DATE) " +
             "AND MONTH(p.dateOfPayment) = MONTH(CURRENT_DATE) " +
             "AND p.category = :category")
-    List<OnlinebankPayment> findPaymentsForCurrentMonthByCategory(HalykCategory category);
+    List<OnlinebankPayment> findPaymentsForCurrentMonthByCategory(OnlinebankCategory category);
+
+    @Query("SELECT p FROM OnlinebankPayment p WHERE YEAR(p.dateOfPayment) = YEAR(CURRENT_DATE) " +
+            "AND MONTH(p.dateOfPayment) = MONTH(CURRENT_DATE) " +
+            "AND p.category = :category")
+    List<OnlinebankPayment> findAllByCategory(OnlinebankCategory category);
+
 }
